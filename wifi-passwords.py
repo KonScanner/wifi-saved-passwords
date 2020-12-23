@@ -20,6 +20,16 @@ if sys.platform == 'win32':
             print("{:<30}|  {:<}".format(i, "ENCODING ERROR"))
     input("")
 
+elif sys.platform == "linux":
+    """example use:
+    $ python3 wifi-passwords.py | sudo sh
+    Will give back all passwords saved in the system. 
+    Unfortunately due to the command requiring elevated
+    permissions, I cannot run and parse as I have done
+    with windows. 
+    """
+    command = "grep psk= /etc/NetworkManager/system-connections/*"
+    print(command)
 else:
-
-    print('Script is not currently supported for linux/macOS or other Operating systems at the moment')
+    print(
+        f'Script is not currently supported for {sys.platform} or other Operating systems at the moment')
